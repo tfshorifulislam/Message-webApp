@@ -1,9 +1,10 @@
-import Image from "next/image";
+import ChatLayout from "@/components/chat/ChatLayout";
+
 
 export default function Home() {
   return (
     <div>
-      this is home page
+      <ChatLayout />
     </div>
   );
 }
