@@ -1,19 +1,19 @@
-
 import { MessageCirclePlus } from "lucide-react";
 import { ChatSearch } from "./ChatSearch";
 import { Button } from "@/components/ui/button";
+import { SearchModal } from "./ChatType";
+import ChatConversationList from "./ChatConversationList";
 
-const ChatRightPannel = () => {
+const ChatRightPannel = ({ onNewChat }: SearchModal) => {
   return (
     <aside className="flex h-full w-sm flex-col border-r bg-background px-5">
       {/* Header */}
-      <div className="flex shrink-0 items-center justify-between py-4">
-        <h3 className="text-xl font-semibold">
-          Chat
-        </h3>
+      <div className="flex items-center justify-between py-3">
+        <h3 className="text-md font-semibold">Chat</h3>
 
         <Button
           variant="ghost"
+          onClick={onNewChat}
           size="icon"
           className="size-9 rounded-full text-muted-foreground hover:text-foreground cursor-pointer"
           aria-label="New chat"
@@ -22,13 +22,15 @@ const ChatRightPannel = () => {
         </Button>
       </div>
 
-
       {/* Search */}
       <div>
         <ChatSearch />
       </div>
 
-      
+      {/* chat conversation List */}
+      <div>
+        <ChatConversationList />
+      </div>
     </aside>
   );
 };

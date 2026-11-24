@@ -1,28 +1,33 @@
+
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogDescription,
-  DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+
 import { ChatSearch } from "./ChatSearch";
 
-const ChatSarchModal = () => {
-  return (
-    <Dialog>
-      <DialogTrigger className="rounded-full px-6 py-2 cursor-pointer bg-foreground text-background">
-        New Chat
-      </DialogTrigger>
+interface ChatSarchModalProps {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}
 
+const ChatSarchModal = ({
+  open,
+  onOpenChange,
+}: ChatSarchModalProps) => {
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>New Chat</DialogTitle>
-          <DialogDescription>Start a new conversation.</DialogDescription>
+          <DialogDescription>
+            Start a new conversation.
+          </DialogDescription>
         </DialogHeader>
 
-        {/* Modal content */}
         <ChatSearch />
       </DialogContent>
     </Dialog>

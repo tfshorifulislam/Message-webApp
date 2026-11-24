@@ -1,7 +1,8 @@
 import { MessageCircle, LockKeyhole } from "lucide-react";
-import ChatSarchModal from "./ChatSarchModal";
+import { Button } from "@/components/ui/button";
+import { SearchModal } from "./ChatType";
 
-const ChatInitPage = () => {
+const ChatInitPage = ({ onNewChat }: SearchModal) => {
   return (
     <main className="flex h-full w-full flex-col items-center justify-center bg-background px-6 text-center">
       <div className="flex size-20 items-center justify-center rounded-3xl bg-primary/10">
@@ -17,7 +18,12 @@ const ChatInitPage = () => {
       </p>
 
       <div className="mt-3">
-        <ChatSarchModal />
+        <Button
+          className="cursor-pointer rounded-full px-4 py-4"
+          onClick={onNewChat}
+          >
+          New Chat
+        </Button>
       </div>
 
       <div className="mt-5 flex items-center gap-2 rounded-full border bg-muted/40 px-4 py-2 text-xs text-muted-foreground">
