@@ -9,7 +9,7 @@ const ChatRightPannel = () => {
       {/* Header */}
       <div className="flex shrink-0 items-center justify-between py-4">
         <h3 className="text-xl font-semibold">
-          Chats
+          Chat
         </h3>
 
         <Button

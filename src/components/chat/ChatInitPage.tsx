@@ -1,5 +1,5 @@
 import { MessageCircle, LockKeyhole } from "lucide-react";
-import { Button } from "../ui/button";
+import ChatSarchModal from "./ChatSarchModal";
 
 const ChatInitPage = () => {
   return (
@@ -16,9 +16,11 @@ const ChatInitPage = () => {
         Choose from your existing conversations, or start a new one.
       </p>
 
-      <Button className='mt-3 rounded-full px-5 py-5 cursor-pointer'>New Chat</Button>
+      <div className="mt-3">
+        <ChatSarchModal />
+      </div>
 
-      <div className="mt-8 flex items-center gap-2 rounded-full border bg-muted/40 px-4 py-2 text-xs text-muted-foreground">
+      <div className="mt-5 flex items-center gap-2 rounded-full border bg-muted/40 px-4 py-2 text-xs text-muted-foreground">
         <LockKeyhole className="size-3.5" />
         <span>Private and secure messaging</span>
       </div>
