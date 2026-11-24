@@ -2,13 +2,26 @@ import { dummyChats } from "@/data/dummy-chats";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Badge } from "../ui/badge";
 
-const ChatConversationList = () => {
+type Props = {
+  onSelectChat: (chat: (typeof dummyChats)[number]) => void;
+  selectedChatId: string | null;
+};
+
+const ChatConversationList = ({
+  onSelectChat,
+  selectedChatId,
+}: Props) => {
   return (
-    <div className="flex flex-col gap-1 pb-3">
+    <div className="flex flex-col gap-1 py-3">
       {dummyChats.map((chat) => (
         <button
           key={chat.id}
-          className="flex w-full items-center gap-3 rounded-xl py-3 text-left transition-colors hover:bg-muted cursor-pointer"
+          onClick={() => onSelectChat(chat)}
+          className={`flex w-full cursor-pointer items-center gap-3 rounded-xl p-3 text-left transition-colors ${
+            selectedChatId === chat.id
+              ? "bg-muted"
+              : "hover:bg-muted"
+          }`}
         >
           <div className="relative shrink-0">
             <Avatar className="size-12">
@@ -26,6 +39,7 @@ const ChatConversationList = () => {
               <span className="truncate text-sm font-semibold">
                 {chat.name}
               </span>
+
               <span className="shrink-0 text-xs text-muted-foreground">
                 {chat.time}
               </span>
