@@ -6,7 +6,7 @@ import ChatConversationList from "./ChatConversationList";
 
 const ChatRightPannel = ({ onNewChat }: SearchModal) => {
   return (
-    <aside className="flex h-full w-sm flex-col border-r bg-background px-5">
+    <aside className="flex h-full w-sm flex-col border-r bg-background px-5 overflow-hidden">
       {/* Header */}
       <div className="flex items-center justify-between py-3">
         <h3 className="text-md font-semibold">Chat</h3>
@@ -28,7 +28,7 @@ const ChatRightPannel = ({ onNewChat }: SearchModal) => {
       </div>
 
       {/* chat conversation List */}
-      <div>
+      <div className="min-h-0 flex-1 overflow-y-auto custom-scrollbar">
         <ChatConversationList />
       </div>
     </aside>

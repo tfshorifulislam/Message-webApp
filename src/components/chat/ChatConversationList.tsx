@@ -4,11 +4,11 @@ import { Badge } from "../ui/badge";
 
 const ChatConversationList = () => {
   return (
-    <div className="mt-4 flex flex-col gap-1">
+    <div className="flex flex-col gap-1 pb-3">
       {dummyChats.map((chat) => (
         <button
           key={chat.id}
-          className="flex w-full items-center gap-3 rounded-xl p-3 text-left transition-colors hover:bg-muted"
+          className="flex w-full items-center gap-3 rounded-xl py-3 text-left transition-colors hover:bg-muted cursor-pointer"
         >
           <div className="relative shrink-0">
             <Avatar className="size-12">

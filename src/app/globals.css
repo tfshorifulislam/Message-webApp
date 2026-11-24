@@ -116,6 +116,39 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 999px;
+  transition: background 200ms ease;
+}
+
+/* Show on hover */
+.custom-scrollbar:hover {
+  scrollbar-color: var(--border) transparent;
+}
+
+.custom-scrollbar:hover::-webkit-scrollbar-thumb {
+  background: var(--border);
+}
+
+.custom-scrollbar:hover::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
