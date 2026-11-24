@@ -1,6 +1,6 @@
 import { MessageCircle, LockKeyhole } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { SearchModal } from "./ChatType";
+import { SearchModal } from "@/types/chat";
 
 const ChatInitPage = ({ onNewChat }: SearchModal) => {
   return (

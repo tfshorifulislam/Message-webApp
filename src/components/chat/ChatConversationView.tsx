@@ -1,27 +1,39 @@
-import type { dummyChats } from "@/data/dummy-chats";
+import { LockKeyhole } from "lucide-react";
+import ChatMessageList from "./ChatMessageList";
+import ChatMessageInput from "./ChatMessageInput";
+import { ChatConversationViewProps } from "@/types/chat";
 
-type Props = {
-  chat: (typeof dummyChats)[number];
-};
-
-const ChatConversationView = ({ chat }: Props) => {
+const ChatConversationView = ({
+  chat,
+  messages,
+  onSendMessage,
+}: ChatConversationViewProps) => {
   return (
-    <div className="flex h-full w-full flex-col">
-      <header className="flex h-16 items-center gap-3 border-b px-5">
+    <section className="flex h-full min-w-0 flex-1 flex-col">
+      {/* Header */}
+      <header className="flex h-16 shrink-0 items-center justify-between border-b px-5">
         <div>
           <h3 className="font-semibold">{chat.name}</h3>
-          <p className="text-xs text-muted-foreground">
-            {chat.username}
-          </p>
+
+          <div className="flex items-center gap-1.5">
+            <span className="text-xs text-muted-foreground">
+              {chat.username}
+            </span>
+
+            <span className="flex items-center gap-1 text-xs text-emerald-600">
+              <LockKeyhole className="size-3" />
+              Encrypted
+            </span>
+          </div>
         </div>
       </header>
 
-      <div className="flex flex-1 items-center justify-center">
-        <p className="text-sm text-muted-foreground">
-          Start conversation with {chat.name}
-        </p>
-      </div>
-    </div>
+      {/* Messages */}
+      <ChatMessageList messages={messages} />
+
+      {/* Input */}
+      <ChatMessageInput onSend={onSendMessage} />
+    </section>
   );
 };
 

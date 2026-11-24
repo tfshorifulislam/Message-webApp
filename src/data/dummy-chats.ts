@@ -1,5 +1,6 @@
+import type { Chat } from "@/types/chat";
 
-export const dummyChats = [
+export const dummyChats: Chat[] = [
   {
     id: "1",
     name: "Rahim Ahmed",

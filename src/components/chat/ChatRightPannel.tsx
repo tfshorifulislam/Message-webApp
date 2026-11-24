@@ -1,22 +1,19 @@
 import { MessageCirclePlus } from "lucide-react";
-import { ChatSearch } from "./ChatSearch";
 import { Button } from "@/components/ui/button";
-import { SearchModal } from "./ChatType";
 import ChatConversationList from "./ChatConversationList";
-import type { dummyChats } from "@/data/dummy-chats";
-
-type Props = SearchModal & {
-  onSelectChat: (chat: (typeof dummyChats)[number]) => void;
-  selectedChatId: string | null;
-};
+import { ChatSearch } from "./ChatSearch";
+import { RightPannelProps } from "@/types/chat";
 
 const ChatRightPannel = ({
   onNewChat,
   onSelectChat,
   selectedChatId,
-}: Props) => {
+  chats,
+  searchQuery,
+  onSearchChange,
+}: RightPannelProps) => {
   return (
-    <aside className="flex h-full w-sm flex-col overflow-hidden border-r bg-background px-5">
+    <aside className="flex h-full w-sm shrink-0 flex-col overflow-hidden border-r bg-background px-5">
       {/* Header */}
       <div className="flex items-center justify-between py-3">
         <h3 className="text-md font-semibold">Chat</h3>
@@ -33,13 +30,17 @@ const ChatRightPannel = ({
       </div>
 
       {/* Search */}
-      <div>
-        <ChatSearch />
+      <div className="shrink-0">
+        <ChatSearch
+          value={searchQuery}
+          onChange={onSearchChange}
+        />
       </div>
 
-      {/* Chat Conversation List */}
+      {/* Conversation List */}
       <div className="custom-scrollbar min-h-0 flex-1 overflow-y-auto">
         <ChatConversationList
+          chats={chats}
           onSelectChat={onSelectChat}
           selectedChatId={selectedChatId}
         />

@@ -1,32 +1,38 @@
-import { dummyChats } from "@/data/dummy-chats";
+import { ChatConversationListProps } from "@/types/chat";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Badge } from "../ui/badge";
 
-type Props = {
-  onSelectChat: (chat: (typeof dummyChats)[number]) => void;
-  selectedChatId: string | null;
-};
-
 const ChatConversationList = ({
+  chats,
   onSelectChat,
   selectedChatId,
-}: Props) => {
+}: ChatConversationListProps) => {
+  const sortedChats = [...chats].sort((a, b) => Number(b.pinned) - Number(a.pinned),);
+
+  if (sortedChats.length === 0) {
+    return (
+      <p className="px-3 py-8 text-center text-sm text-muted-foreground">
+        No conversations found.
+      </p>
+    );
+  }
+
   return (
     <div className="flex flex-col gap-1 py-3">
-      {dummyChats.map((chat) => (
+      {sortedChats.map((chat) => (
         <button
           key={chat.id}
           onClick={() => onSelectChat(chat)}
           className={`flex w-full cursor-pointer items-center gap-3 rounded-xl p-3 text-left transition-colors ${
-            selectedChatId === chat.id
-              ? "bg-muted"
-              : "hover:bg-muted"
+            selectedChatId === chat.id ? "bg-muted" : "hover:bg-muted"
           }`}
         >
           <div className="relative shrink-0">
             <Avatar className="size-12">
               <AvatarImage src={chat.avatar} alt={chat.name} />
-              <AvatarFallback>{chat.name.slice(0, 2)}</AvatarFallback>
+              <AvatarFallback>
+                {chat.name.slice(0, 2)}
+              </AvatarFallback>
             </Avatar>
 
             {chat.online && (
